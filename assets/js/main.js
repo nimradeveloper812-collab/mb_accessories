@@ -493,7 +493,7 @@ function renderFeaturedProducts(filter = 'all') {
                 </div>
                 <h4 class="text-base font-bold text-slate-800">No products found in this category</h4>
                 <p class="text-xs text-slate-500 mt-1">Please check back soon or inquire directly on WhatsApp for fresh stock!</p>
-                <a href="https://wa.me/923044614270?text=Hi%20Muhammad%20Basil!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(selectedTitle)}?" target="_blank" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm active:scale-95">
+                <a href="https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=Assalam-o-Alaikum%20Muhammad%20Basil%20bhai!%20(MB%20Accessories)%20Do%20you%20have%20stock%20for%20${encodeURIComponent(selectedTitle)}%3F" target="_blank" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm active:scale-95">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Inquire on WhatsApp</span>
                 </a>
@@ -735,7 +735,7 @@ function renderAllCategoriesPage() {
 
                 <!-- Action Button -->
                 <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="${sampleItems.length > 0 ? `products.html?category=${cat.id}` : `https://wa.me/923044614270?text=Hi%20Muhammad%20Basil!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(cat.name)}?`}" ${sampleItems.length === 0 ? 'target="_blank"' : ''} class="w-full ${sampleItems.length > 0 ? 'bg-slate-900 group-hover:bg-blue-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition duration-300 shadow-sm active:scale-98">
+                    <a href="${sampleItems.length > 0 ? `products.html?category=${cat.id}` : `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=Assalam-o-Alaikum%20Muhammad%20Basil%20bhai!%20(MB%20Accessories)%20Do%20you%20have%20stock%20for%20${encodeURIComponent(cat.name)}%3F`}" ${sampleItems.length === 0 ? 'target="_blank"' : ''} class="w-full ${sampleItems.length > 0 ? 'bg-slate-900 group-hover:bg-blue-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition duration-300 shadow-sm active:scale-98">
                         <span>${sampleItems.length > 0 ? `View All ${cat.name}` : `Inquire on WhatsApp`}</span>
                         <i class="${sampleItems.length > 0 ? 'fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1' : 'fa-brands fa-whatsapp text-sm'} transition-transform"></i>
                     </a>
@@ -1038,7 +1038,7 @@ function generateBulkWhatsAppLink() {
 function initFloatingWhatsApp() {
     const floatBtn = document.getElementById('floating-whatsapp');
     if (floatBtn) {
-        const text = `Assalam-o-Alaikum Muhammad Basil bhai! I am browsing your website and have an inquiry.`;
+        const text = `Assalam-o-Alaikum Muhammad Basil bhai! (MB Accessories) Main aap ki website dekh raha hoon aur mujhe inquiry karni hai.`;
         floatBtn.href = `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=${encodeURIComponent(text)}`;
     }
 }
