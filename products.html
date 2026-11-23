@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products & Accessories | MB ACCESSORIES</title>
+    <meta name="description" content="Browse all mobile accessories at MB ACCESSORIES. Phone cases, super-fast chargers, data cables, earbuds, tempered glass, and car mounts.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Theme Initialization (Prevents FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mb_theme');
+            const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        'primary-dark': '#1d4ed8',
+                        cyanAccent: '#06b6d4',
+                        darkBg: '#0b0f19',
+                        darkCard: '#131b2e'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Outfit"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/glow-effects.css">
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 bg-blue-500/20 text-blue-400 font-semibold px-2 py-0.5 rounded-full text-[11px]">
+                    <i class="fa-solid fa-bolt text-[10px]"></i> CATALOG
+                </span>
+                <span>Genuine Quality Mobile Gear Across Pakistan</span>
+            </div>
+            <div class="flex items-center gap-5 text-[11px]">
+                <a href="tel:03044614270" class="hover:text-blue-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-blue-400"></i> 0304-4614270 (Muhammad Basil)
+                </a>
+                <span class="text-slate-600">|</span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-regular fa-clock text-blue-400"></i> 11:00 AM - 10:00 PM
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Navigation (Clean White) -->
+    <header class="glass-nav sticky top-0 z-40 transition-all bg-white/95 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 flex-shrink-0 group">
+                <img src="assets/images/logo.svg" alt="MB ACCESSORIES" class="site-logo-img h-11 w-auto">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-700">
+                <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                <a href="products.html" class="text-blue-600 font-bold hover:text-blue-700 transition">All Products</a>
+                <a href="categories.html" class="hover:text-blue-600 transition">Categories</a>
+                <a href="about.html" class="hover:text-blue-600 transition">About Us</a>
+                <a href="faq.html" class="hover:text-blue-600 transition">Warranty & FAQ</a>
+                <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle-btn" class="theme-toggle-btn relative bg-slate-100 hover:bg-slate-200 text-slate-700 p-2.5 rounded-full border border-slate-200 transition flex items-center justify-center w-10 h-10 active:scale-95" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon text-sm theme-icon-moon"></i>
+                    <i class="fa-solid fa-sun text-sm theme-icon-sun hidden"></i>
+                </button>
+
+                <button id="inquiry-bag-btn" class="relative bg-slate-100 hover:bg-slate-200 text-slate-700 p-2.5 rounded-full border border-slate-200 transition flex items-center justify-center" title="View Inquiry Bag">
+                    <i class="fa-solid fa-clipboard-list text-sm"></i>
+                    <span class="inquiry-badge hidden absolute -top-1 -right-1 bg-blue-600 text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+
+                <a href="https://api.whatsapp.com/send?phone=923044614270?text=Hi%20Muhammad%20Basil%20(MB%20Accessories)!%20I%20have%20an%20inquiry." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-4 rounded-full shadow-md transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>WhatsApp Order</span>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-blue-600 p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-slate-900 text-white z-50 transform translate-x-full drawer flex flex-col justify-between p-6 shadow-2xl">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                <img src="assets/images/logo-white.svg" alt="MB ACCESSORIES" class="h-9 w-auto">
+                <button id="mobile-menu-close" class="text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-4 mt-6 text-sm font-semibold">
+                <a href="index.html" class="hover:text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>Home</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="products.html" class="text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>All Products</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="categories.html" class="hover:text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>Categories</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="about.html" class="hover:text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>About Us</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="faq.html" class="hover:text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>Warranty & FAQ</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="contact.html" class="hover:text-blue-400 py-2 border-b border-slate-800/60 flex items-center justify-between">
+                    <span>Contact Store</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+            </nav>
+        </div>
+        <div class="pt-6 border-t border-slate-800">
+            <!-- Mobile Theme Toggle -->
+            <button id="mobile-theme-toggle-btn" class="w-full mb-3 bg-slate-800 hover:bg-slate-700 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 text-slate-200 transition border border-slate-700 active:scale-98" title="Toggle Dark / Light Mode">
+                <i class="fa-solid fa-moon text-blue-400 theme-icon-moon"></i>
+                <i class="fa-solid fa-sun text-amber-400 theme-icon-sun hidden"></i>
+                <span class="theme-toggle-label">Dark Mode</span>
+            </button>
+
+            <button id="mobile-inquiry-bag-btn" class="w-full mb-3 bg-slate-800 hover:bg-slate-700 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-clipboard-list text-blue-400"></i>
+                <span>View Inquiry List (<span class="inquiry-badge">0</span>)</span>
+            </button>
+            <a href="https://api.whatsapp.com/send?phone=923044614270?text=Hi%20MB%20Accessories!" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 py-3 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Chat on WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Inquiry Bag Drawer -->
+    <div id="inquiry-backdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    <div id="inquiry-drawer" class="fixed top-0 right-0 w-96 max-w-[90vw] h-full bg-white z-50 transform translate-x-full drawer flex flex-col justify-between shadow-2xl">
+        <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-clipboard-list text-blue-400 text-lg"></i>
+                <div>
+                    <h3 class="font-bold text-base leading-tight">Inquiry & Order Bag</h3>
+                    <p class="text-[11px] text-slate-400">Send items directly to WhatsApp</p>
+                </div>
+            </div>
+            <button id="inquiry-drawer-close" class="text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="inquiry-items-container" class="flex-1 overflow-y-auto p-5 space-y-3">
+            <!-- Populated via JavaScript -->
+        </div>
+        <div class="p-5 border-t border-slate-200 bg-slate-50">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Estimated Total</span>
+                <span id="inquiry-total-estimate" class="text-lg font-black text-slate-900">Rs. 0</span>
+            </div>
+            <a id="inquiry-send-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 transition">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Send Order via WhatsApp</span>
+            </a>
+            <p class="text-[10px] text-slate-400 text-center mt-2.5">
+                No payment required online. We verify stock and coordinate delivery directly via WhatsApp.
+            </p>
+        </div>
+    </div>
+
+    <!-- PAGE HERO BANNER (Clean White Theme) -->
+    <section class="bg-white text-slate-900 py-12 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <!-- Breadcrumbs -->
+                    <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                        <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                        <i class="fa-solid fa-angle-right text-[10px]"></i>
+                        <span class="text-blue-600 font-semibold">Products Catalog</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Mobile Accessories & Spare Parts</h1>
+                    <p class="text-slate-500 text-sm mt-1">Explore all 9 categories of original mobile parts and gear in Gujranwala.</p>
+                </div>
+
+                <!-- Fast WhatsApp direct link -->
+                <div class="flex items-center gap-3">
+                    <a href="https://api.whatsapp.com/send?phone=923044614270?text=Assalam-o-Alaikum%20Muhammad%20Basil%20bhai!%20Can%20you%20help%20me%20find%20an%20accessory%20for%20my%20phone?" target="_blank" rel="noopener noreferrer" class="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-4 rounded-xl flex items-center gap-2 transition shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                        <span>Need Recommendation?</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CATALOG CONTAINER (2-Column Layout with Vertical Categories Sidebar) -->
+    <main class="py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- LEFT COLUMN: VERTICAL CATEGORIES MENU (4 cols) -->
+                <div class="lg:col-span-4 bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm lg:sticky lg:top-24 glow-card glow-card-featured">
+                    <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                        <div>
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-600 block">Category Filter</span>
+                            <h3 class="text-lg font-black text-slate-900 mt-0.5">All 9 Categories</h3>
+                        </div>
+                        <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold border border-blue-100">
+                            9
+                        </span>
+                    </div>
+
+                    <!-- Vertical Stacked Category Buttons (Populated dynamically via JS) -->
+                    <div class="space-y-2" id="catalog-categories-bar">
+                        <!-- Populated by JavaScript: All + 9 Categories stacked vertically -->
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: SEARCH, SORT & PRODUCTS GRID (8 cols) -->
+                <div class="lg:col-span-8 space-y-6">
+                    
+                    <!-- Search & Sort Top Toolbar -->
+                    <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm space-y-4 glow-card-subtle">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <!-- Live Search Input -->
+                            <div class="relative w-full sm:w-80">
+                                <input type="text" id="catalog-search-input" placeholder="Search accessories, parts, models..." class="w-full bg-slate-50 text-slate-800 placeholder-slate-400 text-xs rounded-xl pl-10 pr-4 py-3 border border-slate-200 focus:outline-none focus:border-blue-500 focus:bg-white transition">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            </div>
+
+                            <!-- Right Controls: Sort & Reset -->
+                            <div class="flex items-center justify-between w-full sm:w-auto gap-3">
+                                <div class="flex items-center gap-2">
+                                    <label for="catalog-sort-select" class="text-xs font-bold text-slate-500 whitespace-nowrap">Sort:</label>
+                                    <select id="catalog-sort-select" class="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-xl px-3 py-2.5 focus:outline-none focus:border-blue-500 font-medium">
+                                        <option value="default">Featured</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                        <option value="rating">Highest Rated</option>
+                                        <option value="name-az">Name: A to Z</option>
+                                    </select>
+                                </div>
+
+                                <button id="reset-filters-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5" title="Reset Filters">
+                                    <i class="fa-solid fa-rotate-left text-[11px]"></i>
+                                    <span class="hidden sm:inline">Reset</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Result Count Bar -->
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <span id="catalog-result-count" class="font-semibold text-slate-700">Loading products...</span>
+                            <span class="text-emerald-600 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> In-Stock in Gujranwala
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- PRODUCTS GRID (3 cols on desktop) -->
+                    <div id="catalog-products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Dynamically populated from products-data.js -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+                <div class="lg:col-span-2 space-y-4">
+                    <img src="assets/images/logo-white.svg" alt="MB ACCESSORIES" class="h-10 w-auto">
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                        MB ACCESSORIES is your trusted hub for premium mobile accessories. From ultra-durable fast chargers to protective cases and audio gear, we provide guaranteed quality for all smartphones.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-blue-600 text-white flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-pink-600 text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram text-xs"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 text-white flex items-center justify-center transition"><i class="fa-brands fa-whatsapp text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Quick Links</h5>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="index.html" class="hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="products.html" class="text-blue-400 transition">All Products</a></li>
+                        <li><a href="categories.html" class="hover:text-blue-400 transition">Product Categories</a></li>
+                        <li><a href="about.html" class="hover:text-blue-400 transition">About Our Store</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition">Contact & Location</a></li>
+                        <li><a href="faq.html" class="hover:text-blue-400 transition">Warranty & FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Top Categories</h5>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="products.html?category=cases" class="hover:text-blue-400 transition">Cases & Covers</a></li>
+                        <li><a href="products.html?category=chargers" class="hover:text-blue-400 transition">Fast Chargers (GaN)</a></li>
+                        <li><a href="products.html?category=cables" class="hover:text-blue-400 transition">Braided Cables (100W)</a></li>
+                        <li><a href="products.html?category=audio" class="hover:text-blue-400 transition">Wireless ANC Earbuds</a></li>
+                        <li><a href="products.html?category=protectors" class="hover:text-blue-400 transition">Privacy Screen Glass</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Store Info</h5>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-blue-400 mt-0.5 flex-shrink-0"></i>
+                            <span>Shop No. 12, Farooq Center, Tehsil Road, Gujranwala</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-blue-400 flex-shrink-0"></i>
+                            <a href="tel:03044614270" class="hover:text-white">0304-4614270 (Muhammad Basil)</a>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 flex-shrink-0"></i>
+                            <a href="https://api.whatsapp.com/send?phone=923044614270" target="_blank" class="hover:text-white">0304-4614270 (Muhammad Basil)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 <strong class="text-slate-300">MB ACCESSORIES</strong>. All Rights Reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="faq.html" class="hover:text-slate-300 transition">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="faq.html" class="hover:text-slate-300 transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a id="floating-whatsapp" href="https://api.whatsapp.com/send?phone=923044614270&text=Assalam-o-Alaikum%20Muhammad%20Basil%20bhai!" target="_blank" rel="noopener noreferrer" class="whatsapp-float whatsapp-pulse w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/products-data.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

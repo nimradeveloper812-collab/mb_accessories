@@ -1,0 +1,629 @@
+/* ==========================================================================
+   MB ACCESSORIES — Premium Animated Glowing Borders & Light Sweep Effects
+   Enterprise CSS Motion & Illumination System
+   Features:
+   - Continuous 360° Rotating Border Beams (conic-gradient + @property)
+   - Multi-Layered Ambient Neon Halos & Corner Lighting
+   - Polished Glass Surface Shimmer Light Sweeps
+   - Brand Palette (Electric Blue, Vibrant Cyan, Emerald, Amber, Indigo)
+   - Light & Dark Mode System Integration (WCAG AA & 60 FPS Optimized)
+   - Reduced Motion Accessibility Compliance
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Modern CSS Property Registration for GPU Composited Border Angle
+   Supported natively in Chrome 85+, Safari 16.4+, Edge 85+, Firefox 128+
+   -------------------------------------------------------------------------- */
+@property --border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* --------------------------------------------------------------------------
+   2. Design Tokens & Color Palettes (Light Mode & Dark Mode)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Brand Cyan / Electric Blue (Default) */
+    --glow-beam-head: #ffffff;
+    --glow-beam-core: #06b6d4;
+    --glow-beam-trail: #2563eb;
+    --glow-border-base: rgba(37, 99, 235, 0.22);
+    --glow-border-highlight: rgba(6, 182, 212, 0.65);
+    --glow-halo-1: rgba(37, 99, 235, 0.14);
+    --glow-halo-2: rgba(6, 182, 212, 0.10);
+    --glow-shimmer-color: rgba(255, 255, 255, 0.24);
+
+    /* Emerald / WhatsApp Palette */
+    --glow-emerald-head: #ffffff;
+    --glow-emerald-core: #34d399;
+    --glow-emerald-trail: #10b981;
+    --glow-emerald-border: rgba(16, 185, 129, 0.26);
+    --glow-emerald-border-high: rgba(52, 211, 153, 0.75);
+    --glow-emerald-halo-1: rgba(16, 185, 129, 0.16);
+    --glow-emerald-halo-2: rgba(5, 150, 105, 0.12);
+    --glow-emerald-shimmer: rgba(167, 243, 208, 0.24);
+
+    /* Amber / Golden Palette */
+    --glow-amber-head: #ffffff;
+    --glow-amber-core: #fbbf24;
+    --glow-amber-trail: #f59e0b;
+    --glow-amber-border: rgba(245, 158, 11, 0.26);
+    --glow-amber-border-high: rgba(251, 191, 36, 0.75);
+    --glow-amber-halo-1: rgba(245, 158, 11, 0.16);
+    --glow-amber-halo-2: rgba(217, 119, 6, 0.12);
+    --glow-amber-shimmer: rgba(254, 240, 138, 0.24);
+
+    /* Indigo / Wholesale Palette */
+    --glow-indigo-head: #ffffff;
+    --glow-indigo-core: #818cf8;
+    --glow-indigo-trail: #6366f1;
+    --glow-indigo-border: rgba(99, 102, 241, 0.26);
+    --glow-indigo-border-high: rgba(129, 140, 248, 0.75);
+    --glow-indigo-halo-1: rgba(99, 102, 241, 0.16);
+    --glow-indigo-halo-2: rgba(79, 70, 229, 0.12);
+    --glow-indigo-shimmer: rgba(199, 210, 254, 0.24);
+
+    /* Animation Timing Defaults */
+    --beam-speed-normal: 5.5s;
+    --beam-speed-featured: 6.5s;
+    --beam-speed-fast: 4s;
+    --shimmer-speed: 7s;
+}
+
+/* Dark Mode Theme Tokens (Enhanced Luminescence for High Tech Look) */
+html.dark {
+    --glow-beam-head: #ffffff;
+    --glow-beam-core: #22d3ee;
+    --glow-beam-trail: #3b82f6;
+    --glow-border-base: rgba(59, 130, 246, 0.38);
+    --glow-border-highlight: rgba(34, 211, 238, 0.85);
+    --glow-halo-1: rgba(59, 130, 246, 0.30);
+    --glow-halo-2: rgba(34, 211, 238, 0.20);
+    --glow-shimmer-color: rgba(255, 255, 255, 0.16);
+
+    --glow-emerald-border: rgba(52, 211, 153, 0.45);
+    --glow-emerald-border-high: rgba(110, 231, 183, 0.85);
+    --glow-emerald-halo-1: rgba(16, 185, 129, 0.32);
+    --glow-emerald-halo-2: rgba(5, 150, 105, 0.22);
+    --glow-emerald-shimmer: rgba(167, 243, 208, 0.18);
+
+    --glow-amber-border: rgba(251, 191, 36, 0.45);
+    --glow-amber-border-high: rgba(253, 224, 71, 0.85);
+    --glow-amber-halo-1: rgba(245, 158, 11, 0.32);
+    --glow-amber-halo-2: rgba(217, 119, 6, 0.22);
+    --glow-amber-shimmer: rgba(254, 240, 138, 0.18);
+
+    --glow-indigo-border: rgba(129, 140, 248, 0.45);
+    --glow-indigo-border-high: rgba(165, 180, 252, 0.85);
+    --glow-indigo-halo-1: rgba(99, 102, 241, 0.32);
+    --glow-indigo-halo-2: rgba(79, 70, 229, 0.22);
+    --glow-indigo-shimmer: rgba(199, 210, 254, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   3. Keyframe Animations (Hardware-Accelerated)
+   -------------------------------------------------------------------------- */
+
+/* Continuous 360° Circular Border Beam Rotation */
+@keyframes borderBeamRotate {
+    0% {
+        --border-angle: 0deg;
+    }
+    100% {
+        --border-angle: 360deg;
+    }
+}
+
+/* Diagonal Glass Surface Shimmer Sweep with Natural Pause */
+@keyframes surfaceGlassSweep {
+    0% {
+        transform: translateX(-160%) skewX(-20deg);
+        opacity: 0;
+    }
+    4% {
+        opacity: 0.95;
+    }
+    24% {
+        transform: translateX(280%) skewX(-20deg);
+        opacity: 0.95;
+    }
+    28% {
+        transform: translateX(280%) skewX(-20deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(280%) skewX(-20deg);
+        opacity: 0;
+    }
+}
+
+/* Subtle Ambient Halo Breathing on High-Priority Cards */
+@keyframes ambientHaloBreathe {
+    0%, 100% {
+        box-shadow: 
+            0 0 0 1px var(--glow-border-base),
+            0 4px 18px -2px var(--glow-halo-1),
+            0 10px 32px -4px var(--glow-halo-2),
+            0 8px 20px -6px rgba(15, 23, 42, 0.08);
+    }
+    50% {
+        box-shadow: 
+            0 0 0 1.2px var(--glow-border-highlight),
+            0 6px 24px -1px var(--glow-halo-1),
+            0 14px 42px -3px var(--glow-halo-2),
+            0 12px 28px -6px rgba(15, 23, 42, 0.12);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. Core Glow Card Engine (.glow-card)
+   Permanently visible soft glowing border + continuous traveling light beam
+   + ambient corner halo + occasional surface shimmer sweep
+   -------------------------------------------------------------------------- */
+.glow-card,
+.product-card,
+.category-card,
+.review-card,
+.pillar-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-color: var(--glow-border-base) !important;
+    box-shadow: 
+        0 0 0 1px var(--glow-border-base),
+        0 4px 18px -2px var(--glow-halo-1),
+        0 10px 30px -4px var(--glow-halo-2),
+        0 6px 16px -4px rgba(15, 23, 42, 0.06);
+    transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The Continuous Traveling Light Beam (Rendered via masked ::before) */
+.glow-card::before,
+.product-card::before,
+.category-card::before,
+.review-card::before,
+.pillar-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0deg,
+        transparent 45deg,
+        rgba(37, 99, 235, 0.08) 80deg,
+        var(--glow-beam-trail) 115deg,
+        var(--glow-beam-core) 130deg,
+        var(--glow-beam-head) 136deg,
+        var(--glow-beam-core) 142deg,
+        var(--glow-beam-trail) 155deg,
+        rgba(37, 99, 235, 0.08) 190deg,
+        transparent 230deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    -webkit-mask-clip: content-box, border-box;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    mask-clip: content-box, border-box;
+    pointer-events: none;
+    z-index: 10;
+    animation: borderBeamRotate var(--beam-speed-normal) linear infinite;
+    opacity: 0.90;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* The Glass Surface Shimmer Sweep (Rendered via ::after) */
+.glow-card::after,
+.product-card::after,
+.category-card::after,
+.review-card::after,
+.pillar-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.03) 40%,
+        var(--glow-shimmer-color) 50%,
+        rgba(255, 255, 255, 0.03) 60%,
+        transparent 80%
+    );
+    pointer-events: none;
+    z-index: 11;
+    transform: translateX(-160%) skewX(-20deg);
+    animation: surfaceGlassSweep var(--shimmer-speed) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 1.5s;
+}
+
+/* --------------------------------------------------------------------------
+   5. Desktop Hover Interactions (Smooth Elevation & Glow Amplification)
+   -------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+    .glow-card:hover,
+    .product-card:hover,
+    .category-card:hover,
+    .review-card:hover,
+    .pillar-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--glow-border-highlight) !important;
+        box-shadow: 
+            0 0 0 1.5px var(--glow-border-highlight),
+            0 0 24px 2px var(--glow-halo-1),
+            0 16px 42px -4px var(--glow-halo-2),
+            0 20px 30px -10px rgba(15, 23, 42, 0.12);
+    }
+
+    .glow-card:hover::before,
+    .product-card:hover::before,
+    .category-card:hover::before,
+    .review-card:hover::before,
+    .pillar-card:hover::before {
+        opacity: 1;
+        filter: drop-shadow(0 0 6px var(--glow-beam-core));
+    }
+
+    .glow-card:hover::after,
+    .product-card:hover::after,
+    .category-card:hover::after,
+    .review-card:hover::after,
+    .pillar-card:hover::after {
+        animation-duration: 3.5s;
+    }
+}
+
+/* Dark Mode Hover Shadows */
+html.dark .product-card:hover,
+html.dark .category-card:hover,
+html.dark .review-card:hover,
+html.dark .pillar-card:hover,
+html.dark .glow-card:hover {
+    box-shadow: 
+        0 0 0 1.5px var(--glow-border-highlight),
+        0 0 30px 4px var(--glow-halo-1),
+        0 16px 45px -4px var(--glow-halo-2),
+        0 20px 35px -10px rgba(0, 0, 0, 0.70) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Ultra Featured Glow Card (.glow-card-featured)
+   Dual synchronized travelling border beams + atmospheric pulsing halo
+   Used for: Hero Showcase Graphic, Promotional Banner, Catalog Filter Sidebar,
+   Inquiry Form, and Warranty Highlight
+   -------------------------------------------------------------------------- */
+.glow-card-featured {
+    border-color: var(--glow-border-highlight) !important;
+    animation: ambientHaloBreathe 5s ease-in-out infinite;
+}
+
+.glow-card-featured::before {
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0deg,
+        transparent 35deg,
+        var(--glow-beam-trail) 75deg,
+        var(--glow-beam-core) 90deg,
+        var(--glow-beam-head) 95deg,
+        var(--glow-beam-core) 100deg,
+        var(--glow-beam-trail) 115deg,
+        transparent 155deg,
+        transparent 215deg,
+        var(--glow-beam-trail) 255deg,
+        var(--glow-beam-core) 270deg,
+        var(--glow-beam-head) 275deg,
+        var(--glow-beam-core) 280deg,
+        var(--glow-beam-trail) 295deg,
+        transparent 335deg,
+        transparent 360deg
+    ) !important;
+    animation: borderBeamRotate var(--beam-speed-featured) linear infinite !important;
+    opacity: 0.95 !important;
+    filter: drop-shadow(0 0 4px var(--glow-beam-core));
+}
+
+.glow-card-featured::after {
+    width: 75%;
+    animation-duration: 6s !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Subtle Ambient Glow Card (.glow-card-subtle / .faq-card / .trust-badge-card)
+   Refined luminous border with softer traveling beam for secondary widgets
+   -------------------------------------------------------------------------- */
+.glow-card-subtle,
+.trust-badge-card,
+.faq-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-color: var(--glow-border-base) !important;
+    box-shadow: 
+        0 0 0 1px var(--glow-border-base),
+        0 2px 12px -1px var(--glow-halo-1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card-subtle::before,
+.trust-badge-card::before,
+.faq-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.2px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0deg,
+        transparent 70deg,
+        var(--glow-beam-trail) 120deg,
+        var(--glow-beam-core) 140deg,
+        var(--glow-beam-head) 145deg,
+        var(--glow-beam-core) 150deg,
+        var(--glow-beam-trail) 170deg,
+        transparent 220deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    -webkit-mask-clip: content-box, border-box;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    mask-clip: content-box, border-box;
+    pointer-events: none;
+    z-index: 10;
+    animation: borderBeamRotate 7s linear infinite;
+    opacity: 0.80;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .glow-card-subtle:hover,
+    .trust-badge-card:hover,
+    .faq-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 0 0 1.2px var(--glow-border-highlight),
+            0 6px 20px -2px var(--glow-halo-1);
+    }
+
+    .glow-card-subtle:hover::before,
+    .trust-badge-card:hover::before,
+    .faq-card:hover::before {
+        opacity: 0.98;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   8. Color Variants (Emerald / WhatsApp, Amber / Gold, Indigo / Bulk)
+   -------------------------------------------------------------------------- */
+
+/* Emerald / WhatsApp Palette */
+.glow-emerald {
+    --glow-beam-head: var(--glow-emerald-head);
+    --glow-beam-core: var(--glow-emerald-core);
+    --glow-beam-trail: var(--glow-emerald-trail);
+    --glow-border-base: var(--glow-emerald-border);
+    --glow-border-highlight: var(--glow-emerald-border-high);
+    --glow-halo-1: var(--glow-emerald-halo-1);
+    --glow-halo-2: var(--glow-emerald-halo-2);
+    --glow-shimmer-color: var(--glow-emerald-shimmer);
+}
+
+/* Amber / Golden Store Palette */
+.glow-amber {
+    --glow-beam-head: var(--glow-amber-head);
+    --glow-beam-core: var(--glow-amber-core);
+    --glow-beam-trail: var(--glow-amber-trail);
+    --glow-border-base: var(--glow-amber-border);
+    --glow-border-highlight: var(--glow-amber-border-high);
+    --glow-halo-1: var(--glow-amber-halo-1);
+    --glow-halo-2: var(--glow-amber-halo-2);
+    --glow-shimmer-color: var(--glow-amber-shimmer);
+}
+
+/* Indigo / Tech Wholesale Palette */
+.glow-indigo {
+    --glow-beam-head: var(--glow-indigo-head);
+    --glow-beam-core: var(--glow-indigo-core);
+    --glow-beam-trail: var(--glow-indigo-trail);
+    --glow-border-base: var(--glow-indigo-border);
+    --glow-border-highlight: var(--glow-indigo-border-high);
+    --glow-halo-1: var(--glow-indigo-halo-1);
+    --glow-halo-2: var(--glow-indigo-halo-2);
+    --glow-shimmer-color: var(--glow-indigo-shimmer);
+}
+
+/* --------------------------------------------------------------------------
+   9. Staggered Delays for Visual Harmony Across Grid Cards
+   Gives cards naturally desynchronized, organic light trails
+   -------------------------------------------------------------------------- */
+.product-card:nth-child(6n+1)::before,
+.category-card:nth-child(6n+1)::before {
+    animation-delay: 0s;
+}
+.product-card:nth-child(6n+2)::before,
+.category-card:nth-child(6n+2)::before {
+    animation-delay: -1.0s;
+}
+.product-card:nth-child(6n+3)::before,
+.category-card:nth-child(6n+3)::before {
+    animation-delay: -2.0s;
+}
+.product-card:nth-child(6n+4)::before,
+.category-card:nth-child(6n+4)::before {
+    animation-delay: -3.0s;
+}
+.product-card:nth-child(6n+5)::before,
+.category-card:nth-child(6n+5)::before {
+    animation-delay: -4.0s;
+}
+.product-card:nth-child(6n+6)::before,
+.category-card:nth-child(6n+6)::before {
+    animation-delay: -5.0s;
+}
+
+.product-card:nth-child(3n+1)::after,
+.category-card:nth-child(3n+1)::after {
+    animation-delay: 0.8s;
+}
+.product-card:nth-child(3n+2)::after,
+.category-card:nth-child(3n+2)::after {
+    animation-delay: 2.8s;
+}
+.product-card:nth-child(3n+3)::after,
+.category-card:nth-child(3n+3)::after {
+    animation-delay: 4.8s;
+}
+
+/* Stagger for Review Cards */
+.review-card:nth-child(3n+1)::before {
+    animation-delay: 0s;
+}
+.review-card:nth-child(3n+2)::before {
+    animation-delay: -1.8s;
+}
+.review-card:nth-child(3n+3)::before {
+    animation-delay: -3.6s;
+}
+.review-card:nth-child(3n+1)::after {
+    animation-delay: 1.0s;
+}
+.review-card:nth-child(3n+2)::after {
+    animation-delay: 3.2s;
+}
+.review-card:nth-child(3n+3)::after {
+    animation-delay: 5.4s;
+}
+
+/* Stagger for Value Pillar Cards */
+.pillar-card:nth-child(4n+1)::before {
+    animation-delay: 0s;
+}
+.pillar-card:nth-child(4n+2)::before {
+    animation-delay: -1.4s;
+}
+.pillar-card:nth-child(4n+3)::before {
+    animation-delay: -2.8s;
+}
+.pillar-card:nth-child(4n+4)::before {
+    animation-delay: -4.2s;
+}
+.pillar-card:nth-child(4n+1)::after {
+    animation-delay: 0.5s;
+}
+.pillar-card:nth-child(4n+2)::after {
+    animation-delay: 2.2s;
+}
+.pillar-card:nth-child(4n+3)::after {
+    animation-delay: 3.9s;
+}
+.pillar-card:nth-child(4n+4)::after {
+    animation-delay: 5.6s;
+}
+
+/* --------------------------------------------------------------------------
+   10. Specialized Glowing Interactive Elements (WhatsApp Float, Badges, Pills)
+   -------------------------------------------------------------------------- */
+
+/* WhatsApp Floating Action Button: Luminous Emerald Perimeter Beam */
+.whatsapp-float {
+    overflow: visible !important;
+}
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0deg,
+        transparent 60deg,
+        rgba(52, 211, 153, 0.4) 100deg,
+        #ffffff 135deg,
+        rgba(52, 211, 153, 0.4) 170deg,
+        transparent 210deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    -webkit-mask-clip: content-box, border-box;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    mask-clip: content-box, border-box;
+    pointer-events: none;
+    z-index: 1000;
+    animation: borderBeamRotate 4s linear infinite;
+}
+
+/* Top Announcement Crown Badge */
+.glow-badge {
+    position: relative;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+    border: 1px solid rgba(37, 99, 235, 0.35);
+}
+
+/* Modal Content Glow Frame */
+.modal-content {
+    box-shadow: 
+        0 0 0 1px var(--glow-border-highlight),
+        0 20px 50px -10px rgba(15, 23, 42, 0.4),
+        0 0 35px var(--glow-halo-1) !important;
+}
+
+/* --------------------------------------------------------------------------
+   11. Touch Devices Optimization
+   Ensures continuous effects run smoothly on touchscreens without hover
+   -------------------------------------------------------------------------- */
+@media (hover: none), (pointer: coarse) {
+    .glow-card,
+    .product-card,
+    .category-card,
+    .review-card,
+    .pillar-card {
+        transform: none !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. Accessibility: prefers-reduced-motion (WCAG AA Compliance)
+   Disables rotation and shimmer sweeps, providing an elegant static glow
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .glow-card::before,
+    .glow-card-featured::before,
+    .glow-card-subtle::before,
+    .product-card::before,
+    .category-card::before,
+    .review-card::before,
+    .pillar-card::before,
+    .trust-badge-card::before,
+    .faq-card::before,
+    .whatsapp-float::after {
+        animation: none !important;
+        opacity: 0.65 !important;
+    }
+
+    .glow-card::after,
+    .glow-card-featured::after,
+    .product-card::after,
+    .category-card::after,
+    .review-card::after,
+    .pillar-card::after {
+        display: none !important;
+    }
+
+    .glow-card-featured {
+        animation: none !important;
+    }
+}

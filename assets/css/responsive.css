@@ -1,0 +1,1458 @@
+/* ==========================================================================
+   MB ACCESSORIES — Comprehensive Responsive Design System
+   Full Mobile-First Responsive CSS
+   Covers: 320px → 2560px | iOS Safari | Android Chrome | All Breakpoints
+   ========================================================================== */
+
+/* ==========================================================================
+   1. GLOBAL RESPONSIVE FOUNDATIONS
+   ========================================================================== */
+
+/* Prevent horizontal overflow on ALL pages */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Safe area insets for iPhone notch / Dynamic Island */
+body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    min-height: 100dvh;
+}
+
+/* Prevent iOS Safari input zoom (font-size ≥ 16px on inputs) */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+    font-size: 16px !important;
+}
+
+/* At larger screens, restore smaller font if desired */
+@media (min-width: 1024px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="number"],
+    input[type="password"],
+    select,
+    textarea {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* All images and media: responsive by default */
+img, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Touch targets: minimum 44px */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Exception: inline icon-only small badges */
+.inquiry-badge,
+nav a::after {
+    min-height: unset;
+}
+
+/* ==========================================================================
+   2. TOP ANNOUNCEMENT BAR — Responsive
+   ========================================================================== */
+
+/* On very small screens, hide the separator pipes and secondary info */
+@media (max-width: 479px) {
+    .bg-slate-950 .text-slate-600 {
+        display: none !important;
+    }
+    
+    /* Stack the bar content sensibly */
+    .bg-slate-950 > div > div {
+        gap: 4px !important;
+    }
+    
+    /* Truncate long phone text if needed */
+    .bg-slate-950 .flex.items-center.gap-5 {
+        flex-wrap: wrap;
+        gap: 8px !important;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 359px) {
+    .bg-slate-950 .text-xs {
+        font-size: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   3. HEADER / NAVBAR — Responsive
+   ========================================================================== */
+
+/* Header: Reduce height on small screens */
+header .h-20 {
+    height: auto;
+    min-height: 64px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    header .h-20 {
+        height: 80px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+/* Logo: Scale down on small screens */
+.site-logo-img {
+    height: 36px;
+    width: auto;
+    max-width: 160px;
+}
+
+@media (min-width: 480px) {
+    .site-logo-img {
+        height: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    .site-logo-img {
+        height: 44px;
+    }
+}
+
+/* Nav links: adjust gap at medium breakpoints */
+@media (min-width: 768px) and (max-width: 1023px) {
+    nav.hidden.md\:flex {
+        gap: 16px !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    nav.hidden.md\:flex {
+        gap: 20px !important;
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* WhatsApp header button: hide text on tablet to save space */
+@media (min-width: 640px) and (max-width: 1023px) {
+    header a.hidden.sm\:inline-flex span {
+        display: none;
+    }
+    header a.hidden.sm\:inline-flex {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* Inquiry button: ensure proper size */
+#inquiry-bag-btn {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+}
+
+/* Mobile menu button: larger touch target */
+#mobile-menu-btn {
+    padding: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   4. MOBILE NAVIGATION DRAWER — Responsive
+   ========================================================================== */
+
+/* Drawer: safe area padding for notch devices */
+#mobile-menu-drawer {
+    padding-top: calc(24px + env(safe-area-inset-top));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    padding-left: max(24px, env(safe-area-inset-left));
+    padding-right: 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile nav links: larger touch targets */
+#mobile-menu-drawer nav a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile bottom actions: prevent overflow */
+#mobile-menu-drawer .pt-6.border-t {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ==========================================================================
+   5. INQUIRY DRAWER — Responsive
+   ========================================================================== */
+
+#inquiry-drawer {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+#inquiry-drawer .p-6:first-child {
+    padding-top: calc(24px + env(safe-area-inset-top));
+}
+
+/* On very small screens, drawer takes full width */
+@media (max-width: 359px) {
+    #inquiry-drawer {
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+}
+
+/* ==========================================================================
+   6. HERO SECTION (index.html) — Responsive
+   ========================================================================== */
+
+/* Hero heading: fluid typography */
+section .text-4xl.sm\:text-5xl.lg\:text-6xl {
+    font-size: clamp(1.75rem, 5vw, 3.75rem);
+    line-height: 1.1;
+}
+
+@media (max-width: 374px) {
+    section .text-4xl.sm\:text-5xl.lg\:text-6xl {
+        font-size: 1.5rem;
+    }
+}
+
+/* Hero description */
+section p.text-base.sm\:text-lg {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+/* Hero CTA buttons: stack on small screens, side by side on larger */
+section .flex.flex-wrap.items-center.gap-4.pt-2 {
+    gap: 12px;
+}
+
+section .flex.flex-wrap.items-center.gap-4.pt-2 a {
+    flex: 1 1 auto;
+    min-width: min(200px, 100%);
+    justify-content: center;
+    text-align: center;
+}
+
+@media (min-width: 480px) {
+    section .flex.flex-wrap.items-center.gap-4.pt-2 a {
+        flex: 0 1 auto;
+        min-width: auto;
+    }
+}
+
+/* Hero trust stats: scale on small */
+@media (max-width: 374px) {
+    section .grid.grid-cols-3.gap-6.pt-6 {
+        gap: 12px;
+    }
+    
+    section .grid.grid-cols-3.gap-6 .text-2xl {
+        font-size: 1.25rem !important;
+    }
+    
+    section .grid.grid-cols-3.gap-6 .text-xs {
+        font-size: 10px !important;
+    }
+}
+
+/* Hero right panel (categories showcase): proper sizing */
+section .lg\:col-span-5 .relative.mx-auto {
+    max-width: 100%;
+}
+
+/* Hero ambient glow divs: prevent overflow */
+.hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15), transparent 70%);
+    pointer-events: none;
+    overflow: hidden;
+    max-width: 100vw;
+}
+
+/* ==========================================================================
+   7. TRUST / USP BAR — Responsive
+   ========================================================================== */
+
+/* Trust badges: 2 col on mobile is fine, but fix icon overflow */
+.trust-badge-card {
+    min-width: 0; /* prevent flex overflow */
+}
+
+.trust-badge-card h4 {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 479px) {
+    /* Single column on very small screens */
+    .bg-white.border-y .grid.grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .trust-badge-card h4 {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .trust-badge-card {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+}
+
+/* ==========================================================================
+   8. SHOP BY CATEGORIES SECTION — Responsive
+   ========================================================================== */
+
+/* Categories header: flex wrapping */
+#home-categories-grid {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 480px) {
+    #home-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    #home-categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Category cards: fix overflow */
+.category-card {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   9. PROMOTIONAL BANNER — Responsive
+   ========================================================================== */
+
+/* Promotional banner heading */
+section .text-2xl.sm\:text-4xl.font-black {
+    font-size: clamp(1.25rem, 4vw, 2.25rem);
+    line-height: 1.2;
+}
+
+/* Promo banner buttons */
+section .pt-2.flex.flex-wrap.gap-4 {
+    flex-direction: column;
+}
+
+@media (min-width: 480px) {
+    section .pt-2.flex.flex-wrap.gap-4 {
+        flex-direction: row;
+    }
+}
+
+section .pt-2.flex.flex-wrap.gap-4 a {
+    width: 100%;
+    justify-content: center;
+}
+
+@media (min-width: 480px) {
+    section .pt-2.flex.flex-wrap.gap-4 a {
+        width: auto;
+    }
+}
+
+/* Background decorative circles: prevent overflow */
+section .absolute.-right-10.-bottom-10 {
+    right: -20px;
+    bottom: -20px;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   10. REVIEWS SECTION — Responsive
+   ========================================================================== */
+
+/* Reviews grid */
+@media (max-width: 767px) {
+    section .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Review cards */
+.review-card {
+    min-width: 0;
+}
+
+/* ==========================================================================
+   11. FOOTER — Responsive
+   ========================================================================== */
+
+footer {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}
+
+/* Footer grid: single column on mobile */
+footer .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    footer .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    footer .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-5 {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+}
+
+/* Footer brand column: lg:col-span-2 within 4-col grid */
+@media (min-width: 1024px) {
+    footer .lg\:col-span-2 {
+        grid-column: span 1;
+    }
+}
+
+/* Footer copyright bar */
+footer .pt-8.flex.flex-col.sm\:flex-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+@media (min-width: 640px) {
+    footer .pt-8.flex.flex-col.sm\:flex-row {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* Footer links: ensure they're wrapping properly */
+footer .flex.items-center.gap-4 {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    footer .flex.items-center.gap-4 {
+        justify-content: flex-end;
+    }
+}
+
+/* ==========================================================================
+   12. FLOATING BUTTONS — Responsive with Safe Areas
+   ========================================================================== */
+
+/* WhatsApp float: safe area aware */
+.whatsapp-float {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    right: calc(24px + env(safe-area-inset-right));
+}
+
+/* Back to top: safe area aware */
+#back-to-top {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    left: calc(24px + env(safe-area-inset-left));
+}
+
+/* On small screens, slightly smaller float button */
+@media (max-width: 374px) {
+    .whatsapp-float {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 1.5rem !important;
+    }
+}
+
+/* WhatsApp tooltip: prevent overflow on small screens */
+@media (max-width: 479px) {
+    .whatsapp-tooltip {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   13. TOAST NOTIFICATIONS — Responsive
+   ========================================================================== */
+
+#toast-container {
+    top: calc(16px + env(safe-area-inset-top));
+    right: calc(16px + env(safe-area-inset-right));
+    left: calc(16px + env(safe-area-inset-left));
+    max-width: calc(100vw - 32px - env(safe-area-inset-left) - env(safe-area-inset-right));
+}
+
+@media (min-width: 480px) {
+    #toast-container {
+        left: auto;
+        max-width: calc(100vw - 48px);
+    }
+}
+
+.toast {
+    max-width: 100%;
+    min-width: 0;
+    word-break: break-word;
+}
+
+/* ==========================================================================
+   14. PRODUCTS PAGE (products.html) — CATALOG LAYOUT
+   ========================================================================== */
+
+/* Categories sidebar: on mobile, show as a horizontal scrollable row */
+@media (max-width: 1023px) {
+    /* The lg:grid-cols-12 layout: stack vertically */
+    .grid.grid-cols-1.lg\:grid-cols-12 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Category sidebar: horizontal scroll on mobile */
+    .lg\:col-span-4 {
+        position: static !important;
+        top: auto !important;
+    }
+    
+    /* Make category buttons horizontally scrollable on mobile */
+    #catalog-categories-bar {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+        padding-bottom: 8px !important;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    
+    #catalog-categories-bar::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    /* Category pills in horizontal mode */
+    #catalog-categories-bar .catalog-cat-pill,
+    #catalog-categories-bar .home-cat-vertical-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        scroll-snap-align: start;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:col-span-4 {
+        grid-column: span 4;
+    }
+    
+    .lg\:col-span-8 {
+        grid-column: span 8;
+    }
+}
+
+/* Search & sort toolbar: responsive */
+@media (max-width: 479px) {
+    /* Stack search and controls vertically on tiny screens */
+    .bg-white.rounded-3xl .flex.flex-col.sm\:flex-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    /* Full-width search */
+    #catalog-search-input {
+        width: 100% !important;
+    }
+    
+    /* Sort controls: flex row but wrap */
+    .flex.items-center.justify-between.w-full.sm\:w-auto {
+        width: 100% !important;
+        justify-content: space-between !important;
+    }
+}
+
+/* Products grid: responsive columns */
+#catalog-products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 479px) {
+    #catalog-products-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1280px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+/* ==========================================================================
+   15. PRODUCT CARDS — Responsive
+   ========================================================================== */
+
+.product-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Product card image: fixed height on mobile to prevent overflow */
+.product-card .relative.overflow-hidden {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.product-card .relative.overflow-hidden img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Product card text: prevent overflow */
+.product-card h3,
+.product-card h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Product card action buttons: ensure they're touchable on mobile */
+.product-card button {
+    min-height: 36px;
+    touch-action: manipulation;
+}
+
+/* Spec pills: prevent overflow */
+.spec-pill {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   16. QUICK VIEW MODAL — Responsive
+   ========================================================================== */
+
+/* Modal: full screen on mobile, centered on desktop */
+#quick-view-modal {
+    padding: 16px;
+    align-items: flex-end; /* bottom sheet on mobile */
+}
+
+@media (min-width: 640px) {
+    #quick-view-modal {
+        padding: 24px;
+        align-items: center;
+    }
+}
+
+#quick-view-modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 24px 24px 0 0; /* bottom sheet style on mobile */
+}
+
+@media (min-width: 640px) {
+    #quick-view-modal .modal-content {
+        max-width: 680px;
+        max-height: 85dvh;
+        border-radius: 24px;
+    }
+}
+
+/* Modal image: fixed size on mobile */
+#quick-view-modal .w-full.h-72 {
+    height: auto;
+    aspect-ratio: 4/3;
+    max-height: 240px;
+}
+
+@media (min-width: 640px) {
+    #quick-view-modal .w-full.h-72 {
+        height: 288px;
+        max-height: unset;
+        aspect-ratio: unset;
+    }
+}
+
+/* Modal grid: stack on mobile */
+@media (max-width: 639px) {
+    #quick-view-modal .grid.grid-cols-1.sm\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ==========================================================================
+   17. CATEGORIES PAGE (categories.html) — Responsive
+   ========================================================================== */
+
+/* All categories grid */
+#all-categories-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 480px) {
+    #all-categories-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #all-categories-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
+
+/* Category card images: controlled height */
+.category-card .cat-img,
+.category-card img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   18. ABOUT PAGE (about.html) — Responsive
+   ========================================================================== */
+
+/* Story section: 2-col becomes 1-col on mobile */
+@media (max-width: 1023px) {
+    section .grid.grid-cols-1.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Story image: controlled height */
+section .h-96 {
+    height: auto;
+    aspect-ratio: 16/9;
+    max-height: 400px;
+}
+
+@media (max-width: 479px) {
+    section .h-96 {
+        max-height: 240px;
+    }
+}
+
+/* Core values: 2-col on mobile, 4-col on desktop */
+@media (max-width: 479px) {
+    section .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 1023px) {
+    section .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    section .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Stats grid on about page */
+@media (max-width: 374px) {
+    section .grid.grid-cols-2.gap-4 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ==========================================================================
+   19. CONTACT PAGE (contact.html) — Responsive
+   ========================================================================== */
+
+/* Contact channels grid */
+@media (max-width: 479px) {
+    main .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    main .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Form + map grid: stack on mobile */
+@media (max-width: 1023px) {
+    main .grid.grid-cols-1.lg\:grid-cols-12 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    main .lg\:col-span-7,
+    main .lg\:col-span-5 {
+        grid-column: span 1 !important;
+    }
+}
+
+/* Contact form padding: smaller on mobile */
+@media (max-width: 479px) {
+    main .bg-white.rounded-3xl.p-8 {
+        padding: 20px !important;
+    }
+    
+    /* Form 2-col becomes 1-col on small mobile */
+    #contact-form .grid.grid-cols-1.sm\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Map container: proper height */
+.relative.rounded-2xl iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    pointer-events: none;
+}
+
+@media (min-width: 480px) {
+    .relative.rounded-2xl iframe {
+        height: 280px;
+    }
+}
+
+/* Store showcase image */
+#store-map .rounded-2xl img {
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   20. FAQ PAGE (faq.html) — Responsive
+   ========================================================================== */
+
+/* FAQ still-have-questions box: stack on tiny screens */
+@media (max-width: 479px) {
+    main .bg-gradient-to-r.from-blue-600.flex.flex-col.sm\:flex-row {
+        flex-direction: column !important;
+        text-align: center;
+        align-items: center;
+    }
+    
+    main .bg-gradient-to-r.from-blue-600 a.whitespace-nowrap {
+        width: 100%;
+        justify-content: center;
+        white-space: normal !important;
+    }
+}
+
+/* ==========================================================================
+   21. PAGE HERO SECTIONS — All Inner Pages
+   ========================================================================== */
+
+/* Page hero heading: fluid */
+section .text-3xl.sm\:text-5xl {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+section .text-3xl.sm\:text-4xl {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+@media (max-width: 374px) {
+    section .text-3xl.sm\:text-5xl,
+    section .text-3xl.sm\:text-4xl {
+        font-size: 1.375rem;
+    }
+}
+
+/* ==========================================================================
+   22. SECTION HEADINGS — Fluid Typography
+   ========================================================================== */
+
+h1 { font-size: clamp(1.5rem, 5vw + 0.5rem, 3.75rem); }
+h2 { font-size: clamp(1.375rem, 3vw + 0.5rem, 2.25rem); }
+h3 { font-size: clamp(1.125rem, 2.5vw + 0.25rem, 1.75rem); }
+h4 { font-size: clamp(0.9375rem, 1.5vw + 0.25rem, 1.125rem); }
+
+/* Override for specific existing size classes (preserve Tailwind values) */
+.text-6xl { font-size: clamp(2.25rem, 7vw, 3.75rem) !important; }
+.text-5xl { font-size: clamp(1.875rem, 5vw, 3rem) !important; }
+.text-4xl { font-size: clamp(1.5rem, 4vw, 2.25rem) !important; }
+.text-3xl { font-size: clamp(1.25rem, 3vw, 1.875rem) !important; }
+
+/* ==========================================================================
+   23. SCROLL PROGRESS BAR — Safe Area
+   ========================================================================== */
+
+#scroll-progress-bar {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* ==========================================================================
+   24. LANDSCAPE ORIENTATION — Specific Fixes
+   ========================================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    /* Reduce hero padding in landscape */
+    section.py-14 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    section.py-12 {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+    }
+    
+    /* Header: compact in landscape */
+    header .h-20,
+    header [class*="h-20"] {
+        min-height: 56px !important;
+    }
+    
+    .site-logo-img {
+        height: 32px !important;
+    }
+    
+    /* Mobile drawer: allow scroll in landscape */
+    #mobile-menu-drawer {
+        overflow-y: auto;
+    }
+    
+    /* Modals: fit landscape */
+    #quick-view-modal .modal-content {
+        max-height: 95dvh;
+    }
+    
+    /* Hero in landscape: side by side even on mobile */
+    section .grid.grid-cols-1.lg\:grid-cols-12 {
+        gap: 24px;
+    }
+}
+
+/* ==========================================================================
+   25. ULTRA-WIDE SCREENS — 2560px+
+   ========================================================================== */
+
+@media (min-width: 1920px) {
+    .max-w-7xl {
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .max-w-7xl {
+        max-width: 1600px;
+    }
+    
+    body {
+        font-size: 1.125rem;
+    }
+}
+
+/* ==========================================================================
+   26. DARK MODE RESPONSIVE FIXES
+   ========================================================================== */
+
+html.dark section.bg-white.border-y {
+    background-color: #0b0f19 !important;
+    border-color: #1e293b !important;
+}
+
+html.dark .bg-gradient-to-r.from-blue-50.via-slate-50 {
+    background: linear-gradient(135deg, #131b2e 0%, #0f172a 100%) !important;
+    border-color: #1e293b !important;
+}
+
+/* Contact form in dark mode */
+html.dark #contact-form input,
+html.dark #contact-form select,
+html.dark #contact-form textarea {
+    background-color: #131b2e !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+/* ==========================================================================
+   27. PRINT MEDIA — Responsive print layout
+   ========================================================================== */
+
+@media print {
+    .whatsapp-float,
+    #back-to-top,
+    #scroll-progress-bar,
+    #toast-container,
+    #mobile-menu-drawer,
+    #mobile-menu-backdrop,
+    #inquiry-drawer,
+    #inquiry-backdrop,
+    header button,
+    #mobile-menu-btn {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+    .max-w-7xl {
+        max-width: 100%;
+    }
+    
+    .grid {
+        display: block;
+    }
+    
+    .grid > * {
+        margin-bottom: 16pt;
+        break-inside: avoid;
+    }
+}
+
+/* ==========================================================================
+   28. ACCESSIBILITY — Focus & High Contrast
+   ========================================================================== */
+
+/* Ensure focus indicators are visible on all screen sizes */
+:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* High contrast media query */
+@media (prefers-contrast: high) {
+    .product-card,
+    .category-card,
+    .trust-badge-card,
+    .review-card,
+    .faq-card,
+    .pillar-card {
+        border-width: 2px !important;
+        border-color: currentColor !important;
+    }
+}
+
+/* ==========================================================================
+   29. SPECIFIC BREAKPOINT OVERRIDES FOR KNOWN LAYOUT ISSUES
+   ========================================================================== */
+
+/* 320px: Extreme small screens */
+@media (max-width: 320px) {
+    .px-4 { padding-left: 12px; padding-right: 12px; }
+    
+    header .flex.items-center.gap-3 {
+        gap: 6px !important;
+    }
+    
+    /* Hide the WhatsApp button text in action group at tiny sizes */
+    header a.hidden.sm\:inline-flex {
+        display: none !important;
+    }
+    
+    /* Compress badge text */
+    .badge-custom {
+        font-size: 9px !important;
+        padding: 2px 6px !important;
+    }
+    
+    /* Reduce section padding */
+    .py-16 { padding-top: 32px !important; padding-bottom: 32px !important; }
+    .py-12 { padding-top: 24px !important; padding-bottom: 24px !important; }
+    .py-10 { padding-top: 20px !important; padding-bottom: 20px !important; }
+}
+
+/* 360px: Common Android budget phone */
+@media (min-width: 320px) and (max-width: 374px) {
+    .text-sm { font-size: 0.8125rem; }
+    .text-xs { font-size: 0.75rem; }
+    
+    section .py-14 {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/* 375px–390px: iPhone SE, iPhone 12/13/14 */
+@media (min-width: 375px) and (max-width: 390px) {
+    /* Standard iPhone handling — mostly fine with our mobile-first approach */
+    .site-logo-img {
+        height: 36px;
+    }
+}
+
+/* 393px–430px: iPhone 15/16 Pro / Plus */
+@media (min-width: 393px) and (max-width: 430px) {
+    /* Larger iPhone phones: can show 2-col product grid */
+    #catalog-products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* 480px–600px: Larger phones, small tablets */
+@media (min-width: 480px) and (max-width: 599px) {
+    .grid.grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 600px–767px: Phablets and small tablets */
+@media (min-width: 600px) and (max-width: 767px) {
+    /* 3-col product grid for bigger phones */
+    #catalog-products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    /* 2-col categories on bigger phones */
+    #home-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 768px–1023px: Tablets (iPad, Android tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Show desktop nav but compressed */
+    nav.hidden.md\:flex {
+        display: flex !important;
+    }
+    
+    /* Nav links wrap safely */
+    nav.hidden.md\:flex {
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+    
+    /* Category sidebar on tablets: horizontal */
+    #catalog-categories-bar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    
+    /* 3-col products on tablet portrait */
+    #catalog-products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* 3-col categories on tablet */
+    #all-categories-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Trust badges: 4-col on tablet */
+    .bg-white.border-y .grid.grid-cols-2 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 820px: iPad specific (portrait) */
+@media (min-width: 820px) and (max-width: 1023px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 1024px–1279px: Small laptops, iPad landscape */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .max-w-7xl {
+        max-width: 100%;
+    }
+    
+    /* Sidebar + content: proper 12-col grid */
+    .grid.grid-cols-1.lg\:grid-cols-12 {
+        grid-template-columns: repeat(12, 1fr) !important;
+    }
+}
+
+/* 1280px–1365px: HD laptops */
+@media (min-width: 1280px) and (max-width: 1365px) {
+    .max-w-7xl {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+/* 1366px–1440px: Full HD laptops */
+@media (min-width: 1366px) {
+    #catalog-products-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==========================================================================
+   29B. JS-RENDERED CONTENT — Responsive Fixes
+   ========================================================================== */
+
+/* Home vertical categories sidebar (from JS): horizontal on mobile */
+#home-vertical-categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+@media (max-width: 1023px) {
+    #home-vertical-categories-list {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #home-vertical-categories-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .home-cat-vertical-btn {
+        flex-shrink: 0 !important;
+        width: auto !important;
+        min-width: 140px !important;
+    }
+}
+
+/* Catalog category pills: horizontal scroll on tablet/mobile */
+@media (max-width: 1023px) {
+    .catalog-cat-pill {
+        flex-shrink: 0 !important;
+        width: auto !important;
+        min-width: 130px !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Truncate long category name text */
+    .catalog-cat-pill .truncate {
+        max-width: 90px;
+    }
+}
+
+/* Category card image area: responsive height */
+.category-card .relative.h-44 {
+    height: auto;
+    aspect-ratio: 16/9;
+    min-height: 160px;
+    max-height: 220px;
+}
+
+@media (min-width: 480px) {
+    .category-card .relative.h-44 {
+        height: 176px; /* h-44 = 11rem = 176px */
+        max-height: none;
+        aspect-ratio: unset;
+    }
+}
+
+/* Featured products container: responsive grid */
+#featured-products-container {
+    display: grid;
+    gap: 16px;
+}
+
+@media (max-width: 479px) {
+    #featured-products-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 480px) {
+    #featured-products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    #featured-products-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Quick view modal: responsive grid inside */
+#quick-view-modal .grid.grid-cols-1.sm\:grid-cols-5 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 640px) {
+    #quick-view-modal .grid.grid-cols-1.sm\:grid-cols-5 {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+/* Quick view product action buttons: full width on tiny screens */
+@media (max-width: 374px) {
+    #quick-view-modal .grid.grid-cols-5 {
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+    }
+    
+    #quick-view-modal .col-span-4 {
+        grid-column: span 1 !important;
+    }
+    
+    #quick-view-modal .col-span-1 {
+        grid-column: span 1 !important;
+    }
+}
+
+/* Product card action buttons: stack on tiny screen */
+@media (max-width: 319px) {
+    .product-card .grid.grid-cols-5 {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .product-card .col-span-4 {
+        grid-column: span 1;
+    }
+    
+    .product-card .col-span-1 {
+        grid-column: span 1;
+    }
+}
+
+/* Inquiry item in drawer: responsive */
+.inquiry-item {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.inquiry-item img {
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   30. OVERFLOW PREVENTION SAFETY NET
+   ========================================================================== */
+
+/* Ensure no child can cause horizontal scroll */
+main, section, article, aside, header, footer, nav {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Text: prevent long words from causing overflow */
+p, li, span, td, th, label, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* Buttons: prevent text overflow */
+button, a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Exception: flex/grid containers that need overflow */
+button.flex, a.flex, button.inline-flex, a.inline-flex {
+    overflow: visible;
+    max-width: none;
+}
+
+/* Tables: horizontal scroll wrapper */
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Pre/code blocks */
+pre, code {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
