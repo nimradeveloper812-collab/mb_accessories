@@ -493,7 +493,7 @@ function renderFeaturedProducts(filter = 'all') {
                 </div>
                 <h4 class="text-base font-bold text-slate-800">No products found in this category</h4>
                 <p class="text-xs text-slate-500 mt-1">Please check back soon or inquire directly on WhatsApp for fresh stock!</p>
-                <a href="https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=Assalam-o-Alaikum%20MB%20Accessories!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(selectedTitle)}%3F" target="_blank" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm active:scale-95">
+                <a href="https://wa.me/${STORE_CONFIG.whatsappNumber}?text=Assalam-o-Alaikum%20MB%20Accessories!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(selectedTitle)}%3F" target="_blank" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm active:scale-95">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Inquire on WhatsApp</span>
                 </a>
@@ -662,7 +662,7 @@ function applyCatalogFilters() {
                     We have ready stock available at our Farooq Center, Gujranwala shop! Contact Muhammad Basil on WhatsApp to get instant live photos, model compatibility, and wholesale/retail rates.
                 </p>
                 <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-                    <a href="https://api.whatsapp.com/send?phone=923044614270&text=Assalam-o-Alaikum%20MB%20Accessories!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(catName)}." target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-md shadow-emerald-600/20 flex items-center gap-2">
+                    <a href="https://wa.me/923044614270?text=Assalam-o-Alaikum%20MB%20Accessories!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(catName)}." target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-md shadow-emerald-600/20 flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp text-base"></i>
                         <span>Inquire ${catName} via WhatsApp</span>
                     </a>
@@ -735,7 +735,7 @@ function renderAllCategoriesPage() {
 
                 <!-- Action Button -->
                 <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="${sampleItems.length > 0 ? `products.html?category=${cat.id}` : `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=Assalam-o-Alaikum%20MB%20Accessories!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(cat.name)}%3F`}" ${sampleItems.length === 0 ? 'target="_blank"' : ''} class="w-full ${sampleItems.length > 0 ? 'bg-slate-900 group-hover:bg-blue-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition duration-300 shadow-sm active:scale-98">
+                    <a href="${sampleItems.length > 0 ? `products.html?category=${cat.id}` : `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=Assalam-o-Alaikum%20MB%20Accessories!%20Do%20you%20have%20stock%20for%20${encodeURIComponent(cat.name)}%3F`}" ${sampleItems.length === 0 ? 'target="_blank"' : ''} class="w-full ${sampleItems.length > 0 ? 'bg-slate-900 group-hover:bg-blue-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition duration-300 shadow-sm active:scale-98">
                         <span>${sampleItems.length > 0 ? `View All ${cat.name}` : `Inquire on WhatsApp`}</span>
                         <i class="${sampleItems.length > 0 ? 'fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1' : 'fa-brands fa-whatsapp text-sm'} transition-transform"></i>
                     </a>
@@ -1016,11 +1016,11 @@ function renderInquiryDrawerItems() {
    ========================================================================== */
 function generateWhatsAppLink(product) {
     const text = `Assalam-o-Alaikum MB Accessories! 👋\n\nI want to order / inquire about:\n📌 *${product.name}*\n💰 Price: ${STORE_CONFIG.currency} ${product.price.toLocaleString()}\n\nIs this in stock at Farooq Center, Gujranwala?`;
-    return `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
 
 function generateBulkWhatsAppLink() {
-    if (inquiryBag.length === 0) return `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}`;
+    if (inquiryBag.length === 0) return `https://wa.me/${STORE_CONFIG.whatsappNumber}`;
     let text = `Assalam-o-Alaikum MB Accessories! 👋\n\nI would like to order these items from your shop:\n\n`;
     let total = 0;
 
@@ -1032,14 +1032,14 @@ function generateBulkWhatsAppLink() {
     text += `\n💵 Total: ${STORE_CONFIG.currency} ${total.toLocaleString()}`;
     text += `\n\nPlease confirm availability and dispatch details.`;
 
-    return `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
 
 function initFloatingWhatsApp() {
     const floatBtn = document.getElementById('floating-whatsapp');
     if (floatBtn) {
         const text = `Assalam-o-Alaikum MB Accessories! I am browsing your website and I have an inquiry.`;
-        floatBtn.href = `https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=${encodeURIComponent(text)}`;
+        floatBtn.href = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
     }
 }
 
@@ -1119,7 +1119,7 @@ function initContactForm() {
         const waText = `Assalam-o-Alaikum MB Accessories!\n\nMy name is *${name}* (${phone}).\nMessage: ${message}`;
         
         setTimeout(() => {
-            window.open(`https://api.whatsapp.com/send?phone=${STORE_CONFIG.whatsappNumber}&text=${encodeURIComponent(waText)}`, '_blank');
+            window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(waText)}`, '_blank');
             showToast('Opening WhatsApp chat with Muhammad Basil (0304-4614270)...');
             form.reset();
             if (submitBtn) {
