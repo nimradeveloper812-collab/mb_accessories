@@ -6,15 +6,41 @@
       <stop offset="100%" stop-color="#F1F5F9" />
     </linearGradient>
 
-    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB" />
-      <stop offset="100%" stop-color="#1D4ED8" />
-    </linearGradient>
-
     <style>
+      .cat-title {
+        font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        fill: #0F172A;
+      }
+      .cat-sub {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #475569;
+      }
+      .badge-txt {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        fill: #2563EB;
+        letter-spacing: 2px;
+      }
+      .main-title-txt {
+        font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 900;
+        font-size: 34px;
+        fill: #0F172A;
+        letter-spacing: -0.5px;
+      }
+      .sub-title-txt {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 600;
+        font-size: 14.5px;
+        fill: #475569;
+      }
       text {
-        font-family: -apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        text-rendering: optimizeLegibility;
+        text-rendering: geometricPrecision;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
@@ -32,56 +58,56 @@
     <!-- Category Pill Badge -->
     <g transform="translate(400, 0)">
       <rect width="200" height="34" rx="17" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2" />
-      <text x="100" y="22" font-weight="800" font-size="12" fill="#2563EB" text-anchor="middle" letter-spacing="2">
+      <text x="100" y="22" class="badge-txt" text-anchor="middle">
         PRODUCT CATEGORIES
       </text>
     </g>
 
     <!-- Main Title -->
-    <text x="500" y="75" font-weight="900" font-size="34" fill="#0F172A" text-anchor="middle" letter-spacing="-0.5">
+    <text x="500" y="75" class="main-title-txt" text-anchor="middle">
       Mobile Accessories &amp; Spare Parts
     </text>
 
     <!-- Subtitle -->
-    <text x="500" y="105" font-weight="600" font-size="14" fill="#64748B" text-anchor="middle">
+    <text x="500" y="105" class="sub-title-txt" text-anchor="middle">
       Original Quality &amp; Precision Tested Components
     </text>
   </g>
 
-  <!-- 3x3 CATEGORIES GRID (Pure Vector - 100% Crisp & Blur-Free on iPhone & Android) -->
+  <!-- 3x3 CATEGORIES GRID (Pure Vector - 100% Crisp & Blur-Free at Any Zoom Level) -->
   <!-- Row 1 -->
   <!-- 1. LCD & Touch Glass -->
   <g transform="translate(60, 195)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#DBEAFE" />
-    <path d="M37 36 h14 a2 2 0 0 1 2 2 v12 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 v-12 a2 2 0 0 1 2 -2 z" stroke="#2563EB" stroke-width="2" fill="none" />
-    <circle cx="44" cy="50" r="1.5" fill="#2563EB" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">LCD &amp;</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">Touch Glass</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#2563EB" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#DBEAFE" />
+    <path d="M38 36 h14 a2 2 0 0 1 2 2 v14 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 v-14 a2 2 0 0 1 2 -2 z" stroke="#2563EB" stroke-width="2.2" fill="none" />
+    <circle cx="45" cy="51" r="1.5" fill="#2563EB" />
+    <text x="22" y="105" class="cat-title">LCD &amp;</text>
+    <text x="22" y="130" class="cat-title">Touch Glass</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#2563EB" />
   </g>
 
   <!-- 2. Batteries -->
   <g transform="translate(365, 195)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#D1FAE5" />
-    <path d="M36 37 h16 v14 h-16 z M42 34 h4 v3 h-4 z" stroke="#059669" stroke-width="2" fill="none" />
-    <text x="22" y="118" font-weight="800" font-size="20" fill="#0F172A">Batteries</text>
-    <text x="22" y="138" font-weight="600" font-size="12" fill="#64748B">100% Health Grade-A</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#059669" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#D1FAE5" />
+    <path d="M37 37 h16 v16 h-16 z M43 33 h4 v4 h-4 z" stroke="#059669" stroke-width="2.2" fill="none" />
+    <text x="22" y="116" class="cat-title">Batteries</text>
+    <text x="22" y="138" class="cat-sub">100% Health Grade-A</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#059669" />
   </g>
 
   <!-- 3. Charging Flex & Jack -->
   <g transform="translate(670, 195)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#FEF3C7" />
-    <path d="M37 42 h14 M44 35 v14" stroke="#D97706" stroke-width="2.2" stroke-linecap="round" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">Charging Flex</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">&amp; Jack</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#D97706" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#FEF3C7" />
+    <path d="M38 43 h14 M45 36 v14" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" />
+    <text x="22" y="105" class="cat-title">Charging Flex</text>
+    <text x="22" y="130" class="cat-title">&amp; Jack</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#D97706" />
   </g>
 
   <!-- Row 2 -->
@@ -89,35 +115,35 @@
   <g transform="translate(60, 400)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#EDE9FE" />
-    <circle cx="38" cy="45" r="4" stroke="#7C3AED" stroke-width="2" fill="none" />
-    <circle cx="50" cy="45" r="4" stroke="#7C3AED" stroke-width="2" fill="none" />
-    <path d="M38 41 c0 -8 12 -8 12 0" stroke="#7C3AED" stroke-width="2" fill="none" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">AirPods &amp;</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">Handfree</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#7C3AED" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#EDE9FE" />
+    <circle cx="39" cy="46" r="4.5" stroke="#7C3AED" stroke-width="2.2" fill="none" />
+    <circle cx="51" cy="46" r="4.5" stroke="#7C3AED" stroke-width="2.2" fill="none" />
+    <path d="M39 42 c0 -9 12 -9 12 0" stroke="#7C3AED" stroke-width="2.2" fill="none" />
+    <text x="22" y="105" class="cat-title">AirPods &amp;</text>
+    <text x="22" y="130" class="cat-title">Handfree</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#7C3AED" />
   </g>
 
   <!-- 5. Chargers & Data Cables -->
   <g transform="translate(365, 400)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#DBEAFE" />
-    <path d="M44 35 l-6 10 h6 l-2 8 l8 -11 h-6 z" fill="#2563EB" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">Chargers &amp;</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">Data Cables</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#2563EB" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#DBEAFE" />
+    <path d="M45 35 l-7 11 h7 l-2 9 l9 -12 h-7 z" fill="#2563EB" />
+    <text x="22" y="105" class="cat-title">Chargers &amp;</text>
+    <text x="22" y="130" class="cat-title">Data Cables</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#2563EB" />
   </g>
 
   <!-- 6. Mobile Covers & Protectors -->
   <g transform="translate(670, 400)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#FCE7F3" />
-    <path d="M44 35 l8 4 v7 c0 6 -8 10 -8 10 c0 0 -8 -4 -8 -10 v-7 z" stroke="#DB2777" stroke-width="2" fill="none" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">Mobile Covers</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">&amp; Protectors</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#DB2777" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#FCE7F3" />
+    <path d="M45 35 l8 4 v7 c0 7 -8 11 -8 11 c0 0 -8 -4 -8 -11 v-7 z" stroke="#DB2777" stroke-width="2.2" fill="none" />
+    <text x="22" y="105" class="cat-title">Mobile Covers</text>
+    <text x="22" y="130" class="cat-title">&amp; Protectors</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#DB2777" />
   </g>
 
   <!-- Row 3 -->
@@ -125,34 +151,34 @@
   <g transform="translate(60, 605)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#E0F2FE" />
-    <circle cx="44" cy="44" r="7" stroke="#0284C7" stroke-width="2.5" fill="none" />
-    <circle cx="44" cy="44" r="2.5" fill="#0284C7" />
-    <text x="22" y="118" font-weight="800" font-size="20" fill="#0F172A">Camera Glass</text>
-    <text x="22" y="138" font-weight="600" font-size="12" fill="#64748B">Lens &amp; Protector Rings</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#0284C7" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#E0F2FE" />
+    <circle cx="45" cy="45" r="7.5" stroke="#0284C7" stroke-width="2.5" fill="none" />
+    <circle cx="45" cy="45" r="3" fill="#0284C7" />
+    <text x="22" y="116" class="cat-title">Camera Glass</text>
+    <text x="22" y="138" class="cat-sub">Lens &amp; Protector Rings</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#0284C7" />
   </g>
 
   <!-- 8. Power Banks -->
   <g transform="translate(365, 605)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#E0E7FF" />
-    <rect x="36" y="36" width="16" height="16" rx="3" stroke="#4F46E5" stroke-width="2" fill="none" />
-    <path d="M41 44 h6 M44 41 v6" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" />
-    <text x="22" y="118" font-weight="800" font-size="20" fill="#0F172A">Power Banks</text>
-    <text x="22" y="138" font-weight="600" font-size="12" fill="#64748B">10,000 to 30,000mAh</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#4F46E5" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#E0E7FF" />
+    <rect x="36" y="36" width="18" height="18" rx="3.5" stroke="#4F46E5" stroke-width="2.2" fill="none" />
+    <path d="M41 45 h8 M45 41 v8" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" />
+    <text x="22" y="116" class="cat-title">Power Banks</text>
+    <text x="22" y="138" class="cat-sub">10,000 to 30,000mAh</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#4F46E5" />
   </g>
 
   <!-- 9. All Mobile Spare Parts -->
   <g transform="translate(670, 605)">
     <rect x="0" y="4" width="270" height="175" rx="20" fill="#0F172A" opacity="0.04" />
     <rect width="270" height="175" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
-    <rect x="22" y="22" width="44" height="44" rx="14" fill="#FFEDD5" />
-    <path d="M37 51 l9 -9 M46 38 a4 4 0 0 1 5 5 l-4 4" stroke="#EA580C" stroke-width="2" stroke-linecap="round" fill="none" />
-    <text x="22" y="105" font-weight="800" font-size="19" fill="#0F172A">All Mobile</text>
-    <text x="22" y="130" font-weight="800" font-size="19" fill="#0F172A">Spare Parts</text>
-    <rect x="22" y="150" width="36" height="4" rx="2" fill="#EA580C" />
+    <rect x="22" y="22" width="46" height="46" rx="14" fill="#FFEDD5" />
+    <path d="M37 51 l10 -10 M47 38 a4 4 0 0 1 5 5 l-4 4" stroke="#EA580C" stroke-width="2.2" stroke-linecap="round" fill="none" />
+    <text x="22" y="105" class="cat-title">All Mobile</text>
+    <text x="22" y="130" class="cat-title">Spare Parts</text>
+    <rect x="22" y="150" width="38" height="4.5" rx="2" fill="#EA580C" />
   </g>
 </svg>
