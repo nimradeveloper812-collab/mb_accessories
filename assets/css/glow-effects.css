@@ -582,9 +582,18 @@ html.dark .glow-card:hover {
 }
 
 /* --------------------------------------------------------------------------
-   11. Touch Devices Optimization
+   11. Touch Devices & iOS Retina Optimization
    Ensures continuous effects run smoothly on touchscreens without hover
+   and eliminates WebKit subpixel blur on iPhone Retina displays
    -------------------------------------------------------------------------- */
+.glow-card,
+.glow-card-featured,
+.glow-card-subtle {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    isolation: isolate;
+}
+
 @media (hover: none), (pointer: coarse) {
     .glow-card,
     .product-card,
@@ -592,6 +601,13 @@ html.dark .glow-card:hover {
     .review-card,
     .pillar-card {
         transform: none !important;
+    }
+
+    /* Prevent WebKit layer downsampling blur on mobile Retina screens */
+    .glow-card-featured::before,
+    .glow-card::before,
+    .glow-card-subtle::before {
+        filter: none !important;
     }
 }
 
