@@ -1038,7 +1038,7 @@ function generateBulkWhatsAppLink() {
 function initFloatingWhatsApp() {
     const floatBtn = document.getElementById('floating-whatsapp');
     if (floatBtn) {
-        const text = `Assalam-o-Alaikum MB Accessories! I am browsing your website and I have an inquiry.`;
+        const text = `Assalam-o-Alaikum MB Accessories! Main aap ki website dekh raha hoon aur mujhe inquiry karni hai.`;
         floatBtn.href = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
     }
 }
