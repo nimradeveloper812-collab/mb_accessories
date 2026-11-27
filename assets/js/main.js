@@ -701,7 +701,7 @@ function renderAllCategoriesPage() {
                 </div>
 
                 <div class="absolute bottom-4 left-5 right-5">
-                    <span class="text-[11px] uppercase font-bold text-cyan-400 tracking-wider">Muhammad Basil Shop</span>
+                    <span class="text-[11px] uppercase font-bold text-cyan-400 tracking-wider">MB_ accessories Shop</span>
                     <h3 class="text-2xl font-black text-white mt-0.5 tracking-tight">${cat.name}</h3>
                 </div>
             </div>
@@ -1120,7 +1120,7 @@ function initContactForm() {
         
         setTimeout(() => {
             window.open(`https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(waText)}`, '_blank');
-            showToast('Opening WhatsApp chat with Muhammad Basil (0304-4614270)...');
+            showToast('Opening WhatsApp chat with MB_ accessories (0304-4614270)...');
             form.reset();
             if (submitBtn) {
                 submitBtn.disabled = false;

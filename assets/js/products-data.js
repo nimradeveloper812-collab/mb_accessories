@@ -9,9 +9,9 @@
 const STORE_CONFIG = {
     storeName: "MB ACCESSORIES",
     tagline: "Mobile Accessories & Spare Parts | Your Mobile Our Priority",
-    ownerName: "Muhammad Basil",
+    ownerName: "MB_ accessories",
     phone: "0304-4614270",
-    phoneDisplay: "+92 304 4614270 (Muhammad Basil)",
+    phoneDisplay: "+92 304 4614270 (MB_ accessories)",
     whatsappNumber: "923044614270", // Target: 03044614270 without '+' or spaces
     email: "info@mbaccessories.pk",
     address: "Shop No. 12, Farooq Center, Tehsil Road, Gujranwala, Pakistan",
@@ -570,7 +570,7 @@ const TESTIMONIALS = [
     {
         name: "Ali Raza",
         city: "Gujranwala",
-        comment: "Bohot achi shop ha! Muhammad Basil bhai ne WhatsApp par bohot acha guide kia aur LCD foran shop se mil gayi. Quality 100% original ha.",
+        comment: "Bohot achi shop ha! MB_ accessories ne WhatsApp par bohot acha guide kia aur LCD foran shop se mil gayi. Quality 100% original ha.",
         rating: 5,
         product: "OLED Display & Touch Glass"
     },
