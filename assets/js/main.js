@@ -659,7 +659,7 @@ function applyCatalogFilters() {
                 </div>
                 <h3 class="text-xl font-black text-slate-900">Fresh Stock Available on WhatsApp for ${catName}</h3>
                 <p class="text-xs sm:text-sm text-slate-500 mt-1.5 max-w-lg mx-auto leading-relaxed">
-                    We have ready stock available at our Farooq Center, Gujranwala shop! Contact Muhammad Basil on WhatsApp to get instant live photos, model compatibility, and wholesale/retail rates.
+                    We have ready stock available at our Farooq Center, Gujranwala shop! Contact MB_ accessories on WhatsApp to get instant live photos, model compatibility, and wholesale/retail rates.
                 </p>
                 <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
                     <a href="https://wa.me/923044614270?text=Assalam-o-Alaikum%20MB%20Accessories!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(catName)}." target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-md shadow-emerald-600/20 flex items-center gap-2">
